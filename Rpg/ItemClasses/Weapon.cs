@@ -11,7 +11,7 @@ public abstract class Weapon : Item
   }
   
   // Fields
-  public required int atkDamage;
-  public required string atkType;
-  public required bool isTwoHanded;
+  public int? atkDamage;
+  public string? atkType;
+  public bool? isTwoHanded;
 }

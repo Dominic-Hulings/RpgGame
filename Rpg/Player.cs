@@ -14,6 +14,7 @@ public class Player
   public string? Name { get; set; }
   public string? CurrentRoom { get; set; }
   public string? SpawnRoom { get; set; }
+  public bool isFemale;
   public List<Item> Inventory = new List<Item>();
   public Item? ItemInLeftHand { get; set; }
   public Item? ItemInRightHand { get; set; }
