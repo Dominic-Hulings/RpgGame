@@ -4,19 +4,30 @@ namespace Rpg;
 
 public class Player
 {
+  // Constructor
+  public Player(string inName, string inRace, string inClass, bool inIsFemale, int inHealth)
+  {
+    Name = inName;
+    Race = inRace;
+    Health = MaxHealth = inHealth;
+    Class = inClass;
+    isFemale = inIsFemale;
+  }
   // Fields & Properties
-  public int Health { get; set; }
-  public int MaxHealth;
-  public int Defense { get; set; }
-  public int Experience { get; set; }
-  private int ExperienceToLevelUp { get; set; }
-  public int Level { get; set; }
-  public static string? Name;
-  public static string? Race;
-  public string? CurrentRoom { get; set; }
-  public string? SpawnRoom { get; set; }
+  public int Health; //? Minimum health is probably going to be 50
+  private int MaxHealth;
+  private int Defense = 0; //? Minimum defense is probably going to be 0
+  private int Mana = 0;
+  private int CurrentExperience = 0;
+  private int ExperienceToLevelUp = 50; 
+  public int Level { get; private set; } = 1;
+  public string Name { get; }
+  public string Race { get; }
+  public string CurrentRoom { get; set; } = "";
+  private string SpawnRoom { get; set; } = "";
+  public string Class;
   public bool isFemale;
-  public List<Item> Inventory = new List<Item>();
+  private List<Item> Inventory = new List<Item>(); //? Minimum inventory is a torch
   public Item? ItemInLeftHand { get; set; }
   public Item? ItemInRightHand { get; set; }
   
@@ -38,8 +49,8 @@ public class Player
   
   private void GainXp ( int xpGained )
   {
-    Experience += xpGained;
-    if ( Experience >= ExperienceToLevelUp )
+    CurrentExperience += xpGained;
+    if ( CurrentExperience >= ExperienceToLevelUp )
     {
       LevelUp();
     }
@@ -47,12 +58,12 @@ public class Player
   
   private void LoseXp ( int xpLost )
   {
-    Experience -= xpLost;
+    CurrentExperience -= xpLost;
   }
   
   private void LevelUp ()
   {
-    Experience -= ExperienceToLevelUp;
+    CurrentExperience -= ExperienceToLevelUp;
     ExperienceToLevelUp += 100;
     Level += 1;
   }

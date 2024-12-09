@@ -5,61 +5,69 @@ namespace Rpg.Game
 {
   public class CreateCharacter
   {
-    // Properties
-    public int Health { get; set; }
-    public int MaxHealth;
-    public int Defense { get; set; }
-    public int Experience { get; set; }
-    private int ExperienceToLevelUp { get; set; }
-    public int Level { get; set; }
-    public static string? Name;
-    public static string? Race;
-    public string? CurrentRoom { get; set; }
-    public string? SpawnRoom { get; set; }
-    public static bool isFemale;
-    public List<Item> Inventory = new List<Item>();
+    // Fields
+    private int Health;
+    private int Defense;
+    private int Experience;
+    private int ExperienceToLevelUp;
+    private int Level;
+    private string Name;
+    private string Race;
+    private string Class;
+    private string? CurrentRoom;
+    private string? SpawnRoom;
+    private bool isFemale;
+    private List<Item> Inventory = new List<Item>();
     
     // Methods
-    public void Start ()
+    public Player Create ()
     {
       // Base stats and beginning
-      Health = MaxHealth = 25;
+      Health = 50;
       Experience = 0;
       ExperienceToLevelUp = 50;
       Level = 1;
       
-      Console.WriteLine("Welcome to character creation.");
-      Console.WriteLine("Are you a male (m) or female (f)?");
-      Console.WriteLine("*This will not effect gameplay");
+      Console.WriteLine("Welcome to character creation. Follow the prompts to create a character");
       
-      // Gender
-      if (Console.ReadLine().ToLower() == "m")
+      while (true)
       {
-        isFemale = false;
-      }
-      
-      else if (Console.ReadLine().ToLower() == "f")
-      {
-        isFemale = true;
-      }
-      
-      else
-      {
-        Console.WriteLine("Input not recognized, defaulting to male.");
-        isFemale = false;
+        Console.WriteLine("Are you a male (m) or female (f)?");
+        Console.WriteLine("*This will not effect gameplay");
+        
+        // Gender
+        if (Console.ReadLine().ToLower() == "m")
+        {
+          isFemale = false;
+          break;
+        }
+        
+        else if (Console.ReadLine().ToLower() == "f")
+        {
+          isFemale = true;
+          break;
+        }
+        
+        else
+        {
+          Console.WriteLine("Input not recognized, please try again.");
+          continue;
+        }
       }
       
       // Name
+      Console.WriteLine();
       Console.WriteLine("What is your name, traveller?");
       
       Name = Console.ReadLine();
+      Console.WriteLine();
       
       // Race
       while ( true )
       {
         Console.WriteLine("Now it's time to choose a race! Different races come with different perks.");
         Console.WriteLine("The races you can choose from include:");
-        string[] validRaces = {"human", "elf", "dwarf", "orc", "gnome", "duegrar"};
+        string[] validRaces = ["human", "elf", "dwarf", "orc", "gnome", "duegrar"];
         
         Console.WriteLine("|  Human  || Very versatile in nature, able to adapt well to their surroundings.");
         Console.WriteLine("|   Elf   || Bound from birth by the Mythra, they are naturals when it comes to magic.");
@@ -78,22 +86,52 @@ namespace Rpg.Game
             Race = validRaces[i];
             isValid = true;
           }
-          
-          else
+        }
+        
+        Console.WriteLine();
+        if (isValid)
+        {
+          Console.WriteLine($"The race you chose was a {Race}");
+          break;
+        }
+        
+        Console.WriteLine("Input not recognized, please type a valid race from the list.");
+      }
+      
+      // Class
+      while (true)
+      {
+        Console.WriteLine("Now it is time to choose a class, what will you choose?");
+        string[] validClasses = ["fighter", "spellcaster", "thief"];
+        
+        Console.WriteLine("|   Fighter   || Relies on strength and skill to win a fight.");
+        Console.WriteLine("| Spellcaster || Relies on spells to win a fight");
+        Console.WriteLine("|    Thief    || Relies on deception to win a fight");
+        
+        string? classChoice = Console.ReadLine();
+        bool isValid = false;
+        
+        for (int i = 0; i < validClasses.Length; i++)
+        {
+          if (classChoice?.ToLower() == validClasses[i])
           {
-            continue;
+            Class = validClasses[i];
+            isValid = true;
           }
         }
         
-        if (!isValid)
+        Console.WriteLine();
+        if (isValid)
         {
-          Console.WriteLine("Input not recognized, please type a valid race from the list.");
-          continue;
+          Console.WriteLine($"The class you chose was a {Class}");
+          break;
         }
         
-        
-        
+        Console.WriteLine("Input not recognized, please type a valid class from the list.");
       }
+      
+      Console.WriteLine($"Player {Name} has been created sucessfully!");
+      return new Player(Name, Race, Class, isFemale, Health);
     }
   }
 }
