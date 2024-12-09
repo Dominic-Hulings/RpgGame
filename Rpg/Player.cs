@@ -8,10 +8,11 @@ public class Player
   public int Health { get; set; }
   public int MaxHealth;
   public int Defense { get; set; }
-  public int Experience;
+  public int Experience { get; set; }
   private int ExperienceToLevelUp { get; set; }
   public int Level { get; set; }
-  public string? Name { get; set; }
+  public static string? Name;
+  public static string? Race;
   public string? CurrentRoom { get; set; }
   public string? SpawnRoom { get; set; }
   public bool isFemale;
