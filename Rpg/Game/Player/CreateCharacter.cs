@@ -1,7 +1,6 @@
-using Rpg;
 using Rpg.ItemClasses;
 
-namespace Rpg.Game
+namespace Rpg.Game.Player
 {
   public class CreateCharacter
   {

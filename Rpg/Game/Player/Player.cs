@@ -1,6 +1,6 @@
 using Rpg.ItemClasses;
 
-namespace Rpg;
+namespace Rpg.Game.Player;
 
 public class Player
 {
@@ -15,18 +15,20 @@ public class Player
   }
   // Fields & Properties
   public int Health; //? Minimum health is probably going to be 50
+  public int Level { get; private set; } = 1;
   private int MaxHealth;
   private int Defense = 0; //? Minimum defense is probably going to be 0
   private int Mana = 0;
   private int CurrentExperience = 0;
-  private int ExperienceToLevelUp = 50; 
-  public int Level { get; private set; } = 1;
+  private int ExperienceToLevelUp = 50;
+  private int playerId;
   public string Name { get; }
   public string Race { get; }
+  public string Class;
   public string CurrentRoom { get; set; } = "";
   private string SpawnRoom { get; set; } = "";
-  public string Class;
   public bool isFemale;
+  public bool isInCombat;
   private List<Item> Inventory = new List<Item>(); //? Minimum inventory is a torch
   public Item? ItemInLeftHand { get; set; }
   public Item? ItemInRightHand { get; set; }

@@ -1,16 +1,58 @@
-﻿using Rpg.Game;
+﻿using System.Net.Mime;
 using Rpg;
+using Rpg.ServerData;
 
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)");
+Console.WriteLine(PwdHandling.Store("hf*"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 Console.WriteLine("Would you like to create a new character? y/n");
-if (Console.ReadLine().ToLower() == "y")
-{
-  Console.WriteLine();
-  CreateCharacter CC = new CreateCharacter();
-  Player Dominic = CC.Create();
-  Console.WriteLine(Dominic.Name);
-  Console.WriteLine(Dominic.Race);
-  Console.WriteLine(Dominic.Class);
-  Console.WriteLine(Dominic.isFemale);
-  Console.WriteLine(Dominic.Health);
-}
+   
+   string choice = Console.ReadLine();
+   Console.WriteLine();
+   
+   if (choice.ToLower() == "y")
+   {
+     CreateCharacter CC = new CreateCharacter();
+     Player randomPlayer = CC.Create();
+   }
+
+
+Player Dominic = new Player("Dom", "human", "fighter", false, 50);
+   
+   Console.WriteLine("Enter a command");
+   string inCommand = Console.ReadLine();
+   Console.WriteLine();
+   Console.WriteLine(PlayerCommands.ExecCommand(inCommand, Dominic));
+*/
