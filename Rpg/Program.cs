@@ -1,9 +1,12 @@
 ﻿using System.Net.Mime;
 using Rpg;
+using Rpg.Game.Player;
 using Rpg.ServerData;
 
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)");
-Console.WriteLine(PwdHandling.Store("hf*"));
+
+Player Dominic = new Player("Dom", "human", "fighter", false, 50);
+   
 
 
 

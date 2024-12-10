@@ -129,6 +129,12 @@ namespace Rpg.Game.Player
         Console.WriteLine("Input not recognized, please type a valid class from the list.");
       }
       
+      // Password
+      while (true)
+      {
+        Console.WriteLine($"Please create a password for {Name}.");
+        Console.WriteLine("*This is how you will re-access your character if you log out");
+      }
       Console.WriteLine($"Player {Name} has been created sucessfully!");
       return new Player(Name, Race, Class, isFemale, Health);
     }

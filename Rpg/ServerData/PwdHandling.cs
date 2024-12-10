@@ -2,16 +2,21 @@ namespace Rpg.ServerData;
 
 public static class PwdHandling
 {
-  public static int Store ( string inPassword )
+  public static bool isValidPwd ( string inPassword )
   {
     Console.WriteLine("Checking if password is valid");
     
     if (!inPassword.Contains('*'))
     {
       Console.WriteLine("Password is not valid, please try again.");
-      return 0;
+      return false;
     }
     
+    return true;
+  }
+  
+  public static int Store ( string inPassword )
+  {
     var rand = new Random();
     
     while (true)
