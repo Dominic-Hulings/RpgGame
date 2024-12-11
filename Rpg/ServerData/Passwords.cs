@@ -1,3 +1,6 @@
+using System.Security.Cryptography;
+using System.Text;
+
 namespace Rpg.ServerData;
 
 public static class Passwords
@@ -62,8 +65,13 @@ public static class Passwords
       {
         using (StreamWriter sw = File.AppendText(Paths.GetPath("PLYR")))
         {
+          SHA256 sha256 = SHA256.Create();
+          byte[] pwd = Encoding.UTF8.GetBytes(inPassword);
+          byte[] pwdHash = sha256.ComputeHash(pwd);
+          
           sw.WriteLine(userId);
-          sw.WriteLine(inPassword);
+          sw.WriteLine(Encoding.UTF8.GetString(pwdHash));
+          
           break;
         }
       }
