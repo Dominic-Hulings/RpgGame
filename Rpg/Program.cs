@@ -6,7 +6,7 @@ using Rpg.ServerData;
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)");
 
 Passwords.ResetPlayersFile();
-Passwords.Store("w*wwt");
+
    
 
 

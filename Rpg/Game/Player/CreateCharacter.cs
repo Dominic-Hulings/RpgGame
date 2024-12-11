@@ -1,4 +1,5 @@
 using Rpg.ItemClasses;
+using Rpg.ServerData;
 
 namespace Rpg.Game.Player
 {
@@ -10,7 +11,7 @@ namespace Rpg.Game.Player
     private int Experience;
     private int ExperienceToLevelUp;
     private int Level;
-    private string Name;
+    private string Name = "";
     private string Race;
     private string Class;
     private string? CurrentRoom;
@@ -27,12 +28,12 @@ namespace Rpg.Game.Player
       ExperienceToLevelUp = 50;
       Level = 1;
       
-      Console.WriteLine("Welcome to character creation. Follow the prompts to create a character");
+      Console.WriteLine("Welcome to character creation. Follow the prompts to create a character!");
       
       while (true)
       {
         Console.WriteLine("Are you a male (m) or female (f)?");
-        Console.WriteLine("*This will not effect gameplay");
+        Console.WriteLine("*This will not effect gameplay.");
         
         // Gender
         if (Console.ReadLine().ToLower() == "m")
@@ -90,7 +91,7 @@ namespace Rpg.Game.Player
         Console.WriteLine();
         if (isValid)
         {
-          Console.WriteLine($"The race you chose was a {Race}");
+          Console.WriteLine($"The race you chose was a {Race}!");
           break;
         }
         
@@ -104,8 +105,8 @@ namespace Rpg.Game.Player
         string[] validClasses = ["fighter", "spellcaster", "thief"];
         
         Console.WriteLine("|   Fighter   || Relies on strength and skill to win a fight.");
-        Console.WriteLine("| Spellcaster || Relies on spells to win a fight");
-        Console.WriteLine("|    Thief    || Relies on deception to win a fight");
+        Console.WriteLine("| Spellcaster || Relies on spells to win a fight.");
+        Console.WriteLine("|    Thief    || Relies on deception to win a fight.");
         
         string? classChoice = Console.ReadLine();
         bool isValid = false;
@@ -122,7 +123,7 @@ namespace Rpg.Game.Player
         Console.WriteLine();
         if (isValid)
         {
-          Console.WriteLine($"The class you chose was a {Class}");
+          Console.WriteLine($"The class you chose was a {Class}!");
           break;
         }
         
@@ -133,7 +134,32 @@ namespace Rpg.Game.Player
       while (true)
       {
         Console.WriteLine($"Please create a password for {Name}.");
-        Console.WriteLine("*This is how you will re-access your character if you log out");
+        Console.WriteLine("*This is how you will re-access your character if you log out.");
+        Console.WriteLine("**You will need to remember your Characters name AND password!");
+        Console.WriteLine();
+        Console.WriteLine("Your password must: ");
+        Console.WriteLine("Minimum length of 7 characters");
+        Console.WriteLine("Contain at least one asterisk (*)");
+        Console.WriteLine("Contain NO spaces, slashes, or any type of parentheses");
+        
+        string inPwd = Passwords.HideInput();
+        if (!Passwords.isValidPwd(inPwd))
+        {
+          Console.WriteLine("Your password was invalid");
+          continue;
+        }
+        
+        Console.WriteLine("Your password is valid, please type it one more time to confirm.");
+        string confirmPwd = Passwords.HideInput();
+        if ( inPwd != confirmPwd )
+        {
+          Console.WriteLine("Your password's did not match, please try again.");
+          continue;
+        }
+        
+        Console.WriteLine("Your password has been successfully set!");
+        Passwords.Store( Name, inPwd );
+        break;
       }
       Console.WriteLine($"Player {Name} has been created sucessfully!");
       return new Player(Name, Race, Class, isFemale, Health);
