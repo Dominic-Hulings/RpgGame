@@ -41,10 +41,7 @@ public static class Paths
           return sr.ReadLine();
         }
         
-        else
-        {
-          sr.ReadLine();
-        }
+        sr.ReadLine();
       }
       
       return $"Error: Path {pathQuery} was not found";
