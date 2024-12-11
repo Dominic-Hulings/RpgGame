@@ -3,11 +3,11 @@ using Rpg;
 using Rpg.Game.Player;
 using Rpg.ServerData;
 
-Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)");
+Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 
 Passwords.ResetPlayersFile();
-
-   
+Passwords.Store( "Dom", "testing*" );
+Passwords.LoginQuery();
 
 
 

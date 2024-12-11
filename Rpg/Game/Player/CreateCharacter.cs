@@ -3,30 +3,20 @@ using Rpg.ServerData;
 
 namespace Rpg.Game.Player
 {
-  public class CreateCharacter
+  public static class CreateCharacter
   {
-    // Fields
-    private int Health;
-    private int Defense;
-    private int Experience;
-    private int ExperienceToLevelUp;
-    private int Level;
-    private string Name = "";
-    private string Race;
-    private string Class;
-    private string? CurrentRoom;
-    private string? SpawnRoom;
-    private bool isFemale;
-    private List<Item> Inventory = new List<Item>();
-    
     // Methods
-    public Player Create ()
+    public static Player New ()
     {
       // Base stats and beginning
-      Health = 50;
-      Experience = 0;
-      ExperienceToLevelUp = 50;
-      Level = 1;
+      int Health = 50;
+      int Experience = 0;
+      int ExperienceToLevelUp = 50;
+      int Level = 1;
+      bool isFemale;
+      string Name = "";
+      string Race = "";
+      string Class = "";
       
       Console.WriteLine("Welcome to character creation. Follow the prompts to create a character!");
       
@@ -56,11 +46,21 @@ namespace Rpg.Game.Player
       }
       
       // Name
-      Console.WriteLine();
-      Console.WriteLine("What is your name, traveller?");
+      while (true)
+      {
+        Console.WriteLine();
+        Console.WriteLine("What is your name, traveller?");
       
-      Name = Console.ReadLine();
-      Console.WriteLine();
+        Name = Console.ReadLine();
+        
+        if (Passwords.IdQuery(Name) == 0)
+        {
+          Console.WriteLine();
+          break;
+        }
+        
+        Console.WriteLine("That Name already exists, please enter a different name.");
+      }
       
       // Race
       while ( true )
@@ -145,7 +145,7 @@ namespace Rpg.Game.Player
         string inPwd = Passwords.HideInput();
         if (!Passwords.isValidPwd(inPwd))
         {
-          Console.WriteLine("Your password was invalid");
+          Console.WriteLine("Your password was invalid.\n");
           continue;
         }
         
@@ -153,7 +153,7 @@ namespace Rpg.Game.Player
         string confirmPwd = Passwords.HideInput();
         if ( inPwd != confirmPwd )
         {
-          Console.WriteLine("Your password's did not match, please try again.");
+          Console.WriteLine("Your password's did not match, please try again.\n");
           continue;
         }
         
