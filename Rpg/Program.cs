@@ -5,7 +5,7 @@ using Rpg.ServerData;
 
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)");
 
-Player Dominic = new Player("Dom", "human", "fighter", false, 50);
+Console.WriteLine(Paths.GetPath("BASE"));
    
 
 
@@ -39,6 +39,7 @@ Player Dominic = new Player("Dom", "human", "fighter", false, 50);
 
 
 /*
+ Player Dominic = new Player("Dom", "human", "fighter", false, 50);
 
 Console.WriteLine("Would you like to create a new character? y/n");
    
