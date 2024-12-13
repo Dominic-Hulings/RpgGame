@@ -9,6 +9,8 @@ public interface IRoom
   string RoomName { get; }
   string RoomDescription { get; }
   
+  int temp { get; set; }
+  
   bool IsOutside { get; }
   bool IsLit { get; set; }
   

@@ -1,61 +1,35 @@
 ﻿using System.Net.Mime;
 using Rpg;
 using Rpg.Game.Player;
-using Rpg.ServerData;
+using Rpg.Server.ServerData;
+using Rpg.Game.Item;
 
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 
+Paths.SetAll();
 
+FACWeapon test = new FACWeapon("Steel Sword");
 
+Console.WriteLine(test.Name);
+Console.WriteLine(test.Description);
+Console.WriteLine(test.isWearable);
+Console.WriteLine(test.isWieldable);
+Console.WriteLine(test.isConsumable);
+Console.WriteLine();
 
+FACWeapon test1 = new FACWeapon("Steel Broadsword");
 
+Console.WriteLine(test1.Name);
+Console.WriteLine(test1.Description);
+Console.WriteLine(test1.isWearable);
+Console.WriteLine(test1.isWieldable);
+Console.WriteLine(test1.isConsumable);
+Console.WriteLine();
 
+FACWeapon test2 = new FACWeapon("Wooden Sword");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- BasePlayer Dominic = new BasePlayer("Dom", "human", "fighter", false, 50);
-
-Console.WriteLine("Would you like to create a new character? y/n");
-   
-   string choice = Console.ReadLine();
-   Console.WriteLine();
-   
-   if (choice.ToLower() == "y")
-   {
-     CreateCharacter CC = new CreateCharacter();
-     BasePlayer randomPlayer = CC.Create();
-   }
-
-
-BasePlayer Dominic = new BasePlayer("Dom", "human", "fighter", false, 50);
-   
-   Console.WriteLine("Enter a command");
-   string inCommand = Console.ReadLine();
-   Console.WriteLine();
-   Console.WriteLine(PlayerCommands.ExecCommand(inCommand, Dominic));
-*/
+Console.WriteLine(test2.Name);
+Console.WriteLine(test2.Description);
+Console.WriteLine(test2.isWearable);
+Console.WriteLine(test2.isWieldable);
+Console.WriteLine(test2.isConsumable);

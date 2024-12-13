@@ -1,5 +1,5 @@
 using Rpg.Game;
-using Rpg.ServerData;
+using Rpg.Server.ServerData;
 
 namespace Rpg.Game.Player
 {

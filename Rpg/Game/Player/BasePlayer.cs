@@ -13,6 +13,7 @@ public class BasePlayer
     Class = inClass;
     isFemale = inIsFemale;
   }
+  
   // Fields & Properties
   public int Health; //? Minimum health is probably going to be 50
   public int Level { get; private set; } = 1;

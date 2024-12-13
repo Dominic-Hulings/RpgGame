@@ -1,4 +1,4 @@
-namespace Rpg.ServerData;
+namespace Rpg.Server.ServerData;
 
 public static class Paths
 {
@@ -17,6 +17,9 @@ public static class Paths
         sw.WriteLine($"BASE{GameBasePath}");
         sw.WriteLine($"PATH{GameBasePath}/Server/ServerData/Data/paths.txt");
         sw.WriteLine($"PLYR{GameBasePath}/Server/ServerData/Data/players.txt");
+        sw.WriteLine($"WEPN{GameBasePath}/Game/Item/weapons.txt");
+        sw.WriteLine($"WEAR{GameBasePath}/Game/Item/wearables.txt");
+        sw.WriteLine($"CONS{GameBasePath}/Game/Item/consumables.txt");
       }
     }
     

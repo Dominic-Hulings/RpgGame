@@ -1,0 +1,25 @@
+******************************************************
+
+Format:
+
+WeaponName
+WeaponDescription
+AtkDamage (integer)
+isTwoHanded (true or false)
+
+******************************************************
+
+Wooden Sword
+A flimsy childrens toy resembling a shortsword
+2
+false
+
+Steel Sword
+A durable and reliable weapon used by many
+10
+false
+
+Steel Broadsword
+A two-handed steel blade, much heftier than it's counterparts
+15
+true
