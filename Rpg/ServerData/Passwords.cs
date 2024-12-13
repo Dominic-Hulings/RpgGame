@@ -53,32 +53,21 @@ public static class Passwords
   }
   
   public static int IdQuery( string nameQuery ) // Checks if a user id already exists, returns the line number
-  {                                              // if it doesn't and returns a 0 if it does
+  {                                             // if it doesn't and returns a 0 if it does
     using StreamReader sr = new StreamReader(Paths.GetPath("PLYR"));
     {
-      SHA256 sha256 = SHA256.Create();
-      byte[] id = Encoding.UTF8.GetBytes(nameQuery);
-      byte[] idHash = sha256.ComputeHash(id);
+      // SHA256 sha256 = SHA256.Create();
+      // byte[] id = Encoding.UTF8.GetBytes(nameQuery);
+      // byte[] idHash = sha256.ComputeHash(id);
       int currentLine = 0;
       
       while (sr.Peek() >= 0)
       {
         currentLine++;
-        Console.WriteLine(sr.ReadLine());
-        Console.WriteLine(Encoding.UTF8.GetString(idHash));
         
-        if ( Encoding.UTF8.GetBytes(sr.ReadLine()).Length == idHash.Length)
+        if ( sr.ReadLine() == nameQuery)
         {
-          int i = 0;
-          while ( (i < idHash.Length) && (Encoding.UTF8.GetBytes(sr.ReadLine())[i] == idHash[i]))
-          {
-            i++;
-          }
-          
-          if ( i == idHash.Length )
-          {
-            return currentLine;
-          }
+          return currentLine;
         }
       }
     }
@@ -90,11 +79,16 @@ public static class Passwords
   {
     using StreamReader sr = new StreamReader(Paths.GetPath("PLYR"));
     {
-      SHA256 sha256 = SHA256.Create();
-      byte[] pwd = Encoding.UTF8.GetBytes(inPwd);
-      byte[] pwdHash = sha256.ComputeHash(pwd);
+      // SHA256 sha256 = SHA256.Create();
+      // byte[] pwd = Encoding.UTF8.GetBytes(inPwd);
+      // byte[] pwdHash = sha256.ComputeHash(pwd);
       
-      if ( sr.ReadLine().Skip(lineOfName).Take(1) == Encoding.UTF8.GetString(pwdHash) )
+      for (int i = 0; i < lineOfName; i++)
+      {
+        sr.ReadLine();
+      }
+      
+      if ( sr.ReadLine() == inPwd )
       {
         Console.WriteLine("Login successfull!");
         return true;
@@ -126,14 +120,14 @@ public static class Passwords
       {
         using (StreamWriter sw = File.AppendText(Paths.GetPath("PLYR")))
         {
-          SHA256 sha256 = SHA256.Create();
-          byte[] pwd = Encoding.UTF8.GetBytes(inPassword);
-          byte[] id = Encoding.UTF8.GetBytes(inUserId);
-          byte[] pwdHash = sha256.ComputeHash(pwd); // TODO: Add a salt that can be set by admin
-          byte[] idHash = sha256.ComputeHash(id); // TODO: Add a salt that can be set by admin
+          // SHA256 sha256 = SHA256.Create();
+          // byte[] pwd = Encoding.UTF8.GetBytes(inPassword);
+          // byte[] id = Encoding.UTF8.GetBytes(inUserId);
+          // byte[] pwdHash = sha256.ComputeHash(pwd); // TODO: Add a salt that can be set by admin
+          // byte[] idHash = sha256.ComputeHash(id); // TODO: Add a salt that can be set by admin
           
-          sw.WriteLine(Encoding.UTF8.GetString(idHash));
-          sw.WriteLine(Encoding.UTF8.GetString(pwdHash));
+          sw.WriteLine(inUserId);
+          sw.WriteLine(inPassword);
           
           break;
         }
@@ -167,8 +161,5 @@ public static class Passwords
       Console.WriteLine($"Welcome back {inName}!");
       return;
     }
-    
-    Console.WriteLine("That password was incorrect, please try again.");
-    return;
   }
 }
