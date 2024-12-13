@@ -1,11 +1,11 @@
-using Rpg.ItemClasses;
+using Rpg.Game.Item;
 
 namespace Rpg.Game.Player;
 
-public class Player
+public class BasePlayer
 {
   // Constructor
-  public Player(string inName, string inRace, string inClass, bool inIsFemale, int inHealth)
+  public BasePlayer(string inName, string inRace, string inClass, bool inIsFemale, int inHealth)
   {
     Name = inName;
     Race = inRace;
@@ -29,9 +29,9 @@ public class Player
   private string SpawnRoom { get; set; } = "";
   public bool isFemale;
   public bool isInCombat;
-  private List<Item> Inventory = new List<Item>(); //? Minimum inventory is a torch
-  public Item? ItemInLeftHand { get; set; }
-  public Item? ItemInRightHand { get; set; }
+  private List<Item.BaseItem> Inventory = new List<Item.BaseItem>(); //? Minimum inventory is a torch
+  public Item.BaseItem? ItemInLeftHand { get; set; }
+  public Item.BaseItem? ItemInRightHand { get; set; }
   
   // Methods
   public void RecieveDamage ( int damageRecieved )

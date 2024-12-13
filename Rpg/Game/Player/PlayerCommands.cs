@@ -1,12 +1,12 @@
 using Rpg;
-using Rpg.ItemClasses;
+using Rpg.Game;
 
 namespace Rpg.Game.Player;
 
 public static class PlayerCommands
 {
   // Methods
-  public static string ExecCommand(string inCommand, Player player)
+  public static string ExecCommand(string inCommand, BasePlayer basePlayer)
   {
     if ( validCommands.ContainsKey(inCommand) )
     {

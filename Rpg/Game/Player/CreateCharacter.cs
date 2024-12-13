@@ -1,4 +1,4 @@
-using Rpg.ItemClasses;
+using Rpg.Game;
 using Rpg.ServerData;
 
 namespace Rpg.Game.Player
@@ -6,7 +6,7 @@ namespace Rpg.Game.Player
   public static class CreateCharacter
   {
     // Methods
-    public static Player New ()
+    public static BasePlayer New ()
     {
       // Base stats and beginning
       int Health = 50;
@@ -71,7 +71,7 @@ namespace Rpg.Game.Player
         
         Console.WriteLine("|  Human  || Very versatile in nature, able to adapt well to their surroundings.");
         Console.WriteLine("|   Elf   || Bound from birth by the Mythra, they are naturals when it comes to magic.");
-        Console.WriteLine("|  Dwarf  || Raised from the depths of Heifler, metalworking runs in thier blood.");
+        Console.WriteLine("|  Dwarf  || Raised from the depths of Kaglemros, metalworking runs in thier blood.");
         Console.WriteLine("|   Orc   || Having to fight for survival since the dawn of the third age, they are the most skilled fighters in Gilden.");
         Console.WriteLine("|  Gnome  || Due to thier small size, intelligence and wisdom was key to thier survival.");
         Console.WriteLine("| Duegrar || With most being born into poverty, thievery has become their main way of making a living.");
@@ -161,8 +161,8 @@ namespace Rpg.Game.Player
         Passwords.Store( Name, inPwd );
         break;
       }
-      Console.WriteLine($"Player {Name} has been created sucessfully!");
-      return new Player(Name, Race, Class, isFemale, Health);
+      Console.WriteLine($"BasePlayer {Name} has been created sucessfully!");
+      return new BasePlayer(Name, Race, Class, isFemale, Health);
     }
   }
 }

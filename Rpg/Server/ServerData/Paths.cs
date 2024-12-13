@@ -11,24 +11,24 @@ public static class Paths
   {
     try
     {
-      File.WriteAllText($"{GameBasePath}/ServerData/Data/paths.txt", "");
-      using StreamWriter sw = new StreamWriter($"{GameBasePath}/ServerData/Data/paths.txt");
+      File.WriteAllText($"{GameBasePath}/Server/ServerData/Data/paths.txt", "");
+      using StreamWriter sw = new StreamWriter($"{GameBasePath}/Server/ServerData/Data/paths.txt");
       {
         sw.WriteLine($"BASE{GameBasePath}");
-        sw.WriteLine($"PATH{GameBasePath}/ServerData/Data/paths.txt");
-        sw.WriteLine($"PLYR{GameBasePath}/ServerData/Data/players.txt");
+        sw.WriteLine($"PATH{GameBasePath}/Server/ServerData/Data/paths.txt");
+        sw.WriteLine($"PLYR{GameBasePath}/Server/ServerData/Data/players.txt");
       }
     }
     
     catch
     {
-      Console.WriteLine("Error: File nout found");
+      Console.WriteLine("Error: File not found");
     }
   }
   
   public static string GetPath( string pathQuery )
   {
-    using StreamReader sr = new StreamReader($"{GameBasePath}/ServerData/Data/paths.txt");
+    using StreamReader sr = new StreamReader($"{GameBasePath}/Server/ServerData/Data/paths.txt");
     {
       char[] buffer = ['A', 'A', 'A', 'A'];
       while (sr.Peek() >= 0)

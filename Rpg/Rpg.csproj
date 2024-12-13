@@ -11,4 +11,9 @@
       <None Remove="ServerData\Data\path.txt" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Game\NPC\Hostile\" />
+      <Folder Include="Game\NPC\Passive\" />
+    </ItemGroup>
+
 </Project>

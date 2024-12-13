@@ -1,6 +1,6 @@
-namespace Rpg.ItemClasses;
+namespace Rpg.Game.Item;
 
-public abstract class Weapon : Item
+public abstract class Weapon : BaseItem
 {
   // Constructor
   protected Weapon()

@@ -5,9 +5,7 @@ using Rpg.ServerData;
 
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 
-Passwords.ResetPlayersFile();
-Passwords.Store( "Dom", "testing*" );
-Passwords.LoginQuery();
+
 
 
 
@@ -40,7 +38,7 @@ Passwords.LoginQuery();
 
 
 /*
- Player Dominic = new Player("Dom", "human", "fighter", false, 50);
+ BasePlayer Dominic = new BasePlayer("Dom", "human", "fighter", false, 50);
 
 Console.WriteLine("Would you like to create a new character? y/n");
    
@@ -50,11 +48,11 @@ Console.WriteLine("Would you like to create a new character? y/n");
    if (choice.ToLower() == "y")
    {
      CreateCharacter CC = new CreateCharacter();
-     Player randomPlayer = CC.Create();
+     BasePlayer randomPlayer = CC.Create();
    }
 
 
-Player Dominic = new Player("Dom", "human", "fighter", false, 50);
+BasePlayer Dominic = new BasePlayer("Dom", "human", "fighter", false, 50);
    
    Console.WriteLine("Enter a command");
    string inCommand = Console.ReadLine();

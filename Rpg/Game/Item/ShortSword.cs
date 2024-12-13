@@ -1,4 +1,4 @@
-namespace Rpg.ItemClasses;
+namespace Rpg.Game.Item;
 
 public class ShortSword : Weapon
 {
