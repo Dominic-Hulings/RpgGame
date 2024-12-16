@@ -5,7 +5,7 @@ namespace Rpg.Game.Item;
 public class FACWeapon : BaseItem
 {
   // Constructor
-  public FACWeapon( string weaponName )
+  public FACWeapon( string itemName )
   {
     this.isWearable = false;
     this.isWieldable = true;
@@ -13,27 +13,27 @@ public class FACWeapon : BaseItem
     
     using StreamReader sr = new StreamReader(Paths.GetPath("WEPN"));
     {
-      bool weaponFound = false;
+      bool itemFound = false;
       while ( sr.Peek() >= 0 )
       {
         string? currentLine = sr.ReadLine();
-        if ( currentLine == weaponName)
+        if ( currentLine == itemName)
         {
-          weaponFound = true;
+          itemFound = true;
           this.Name = currentLine;
           break;
         }
       }
       
-      if (!weaponFound)
+      if (!itemFound)
       {
-        Console.WriteLine($"Weapon {weaponName} was not found in weapons.txt");
+        Console.WriteLine($"Weapon {itemName} was not found in weapons.txt");
         return;
       }
       
       this.Description = sr.ReadLine();
       this.atkDamage = int.Parse(sr.ReadLine());
-      this.isTwoHanded = bool.Parse(sr.ReadLine());
+      this.atkType = sr.ReadLine();
     }
     
   }

@@ -1,0 +1,30 @@
+******************************************************
+
+Format:
+
+WearableName
+WearableDescription
+DefensePts (integer) Helm = 1, Chest = 2, Leg = 3, Boot = 4
+WornOn (integer)
+
+******************************************************
+
+Steel Helmet
+A heavy but reliable helmet used by most knights, forged from solid steel
+4
+1
+
+Steel Chestplate
+A heavy but reliable chestplate used by most knights, forged from solid steel
+8
+2
+
+Steel Leggings
+A heavy but reliable set of leggings used by most knights, forged from solid steel
+5
+3
+
+Steel Boots
+A heavy but reliable set of boots used by most knights, forged from solid steel
+4
+4

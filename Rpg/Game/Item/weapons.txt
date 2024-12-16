@@ -5,21 +5,23 @@ Format:
 WeaponName
 WeaponDescription
 AtkDamage (integer)
-isTwoHanded (true or false)
+AtkType
 
 ******************************************************
 
 Wooden Sword
 A flimsy childrens toy resembling a shortsword
 2
+One Handed
 false
 
 Steel Sword
 A durable and reliable weapon used by many
 10
+One Handed
 false
 
 Steel Broadsword
 A two-handed steel blade, much heftier than it's counterparts
 15
-true
+Two Handed

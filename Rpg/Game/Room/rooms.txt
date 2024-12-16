@@ -1,0 +1,23 @@
+******************************************************
+
+Format:
+
+RoomName
+RoomDescription
+RoomTemp (integer) 1 - 5 (1 being freezing, 3 being normal, and 5 being boiling)
+IsOutside (bool)
+IsLit (bool)
+
+******************************************************
+
+Spawn Room
+Test test
+3
+true
+true
+
+testing
+gjfkdsjgfds
+3
+true
+true
