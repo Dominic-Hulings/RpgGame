@@ -6,8 +6,14 @@ namespace Rpg.Game.Player
   public static class CreateCharacter
   {
     // Methods
-    public static BasePlayer New ()
+    public static BasePlayer New ( int makeDefault = 0 )
     {
+      // So I don't have to go through all the prompts while testing
+      if ( makeDefault != 0 )
+      {
+        Passwords.Store( "Dom", "testing*" );
+        return new BasePlayer("Dom", "elf", "fighter", false, 50);
+      }
       // Base stats and beginning
       int Health = 50;
       int Experience = 0;
