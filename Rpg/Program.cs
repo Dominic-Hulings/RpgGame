@@ -6,12 +6,13 @@ using Rpg.Game.Item;
 using Rpg.Game.Room;
 using Rpg.Server;
 
-Paths.SetAll();
-
+Console.Clear();
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 Console.WriteLine();
 
-ServerRuntime.InitialStartup();
+Paths.SetAll();
+ServerConfig.StartConfig();
+//ServerRuntime.InitialStartup();
 
 /*
 CreateCharacter.New(1);

@@ -21,6 +21,7 @@ public static class Paths
         sw.WriteLine($"WEAR{GameBasePath}/Game/Item/wearables.txt");
         sw.WriteLine($"CONS{GameBasePath}/Game/Item/consumables.txt");
         sw.WriteLine($"ROOM{GameBasePath}/Game/Room/rooms.txt");
+        sw.WriteLine($"CONF{GameBasePath}/Server/ServerData/Data/config.txt");
       }
     }
     
