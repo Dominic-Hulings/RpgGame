@@ -18,6 +18,8 @@ public static class ServerConfig
       
       using StreamReader sr = new StreamReader(Paths.GetPath("CONF"));
       {
+        Terminal.DisplayLine("Use the arrows to navigate, enter to toggle vales, and space to quit");
+        
         while (sr.Peek() >= 0)
         {
           line++;
@@ -51,14 +53,24 @@ public static class ServerConfig
       if (key == ConsoleKey.UpArrow)
       { 
         index--;
+        
+        if ( index == 0 )
+        {
+          index = line;
+        }
       }
 
       else if (key == ConsoleKey.DownArrow)
       {
         index++;
+        
+        if ( index == (line + 1))
+        {
+          index = 1;
+        }
       }
 
-      else if (key == ConsoleKey.Enter)
+      else if (key == ConsoleKey.Enter) //* Too much code to just change the value to its inverse
       {
         using StreamWriter sw = new StreamWriter(Paths.GetPath("CONF"), false);
         {
@@ -94,8 +106,16 @@ public static class ServerConfig
         
         
       }
+      
+      else if (key == ConsoleKey.Spacebar)
+      {
+        break;
+      }
+      
     }
     
+    Console.Clear();
+    Terminal.DisplayLine("Config saved!", "Green");
   }
   
   
