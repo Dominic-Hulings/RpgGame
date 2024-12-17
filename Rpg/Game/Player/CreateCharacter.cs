@@ -168,11 +168,16 @@ namespace Rpg.Game.Player
         string playerStats = $":{Health}:{Level}:0:50:{Health}:0:0:0:{Race}:{Class}:{isFemale}";
         string playerInv = $"";
         
-        Passwords.Store( $"NAME{Name}", inPwd, playerStats, playerInv );
+        Passwords.Store( Name, inPwd, playerStats, playerInv );
         break;
       }
       Terminal.DisplayLine($"BasePlayer {Name} has been created sucessfully!", "Green");
       return new BasePlayer(Name, Race, Class, isFemale, Health);
+    }
+    
+    public static void GetExisting ()
+    {
+      
     }
   }
 }

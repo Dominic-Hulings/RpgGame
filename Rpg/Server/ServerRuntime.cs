@@ -74,20 +74,16 @@ public static class ServerRuntime
   
   public static void Start()
   {
-    using StreamReader sr = new StreamReader(Paths.GetPath("PLYR"));
+    Terminal.DisplayLine("Starting game...", "Orange");
+    List<FACRoom> AllRooms = new List<FACRoom>(RoomCommands.CreateAllUsed());
+    bool gameloop = true;
+    Terminal.DisplayLine("Game started!", "Green");
+    //! TODO - Passwords.LoginQuery();
+    
+    while (gameloop)
     {
-      while ( sr.Peek() >= 0 )
-      {
-        string line = sr.ReadLine();
-        
-        if ( line == "!" )
-        {
-          
-        }
-      }
+      
     }
-    
-    
   }
   
   public static void Pause()
@@ -96,6 +92,11 @@ public static class ServerRuntime
   }
   
   public static void ShutDown()
+  {
+    
+  }
+  
+  public static void eventListener()
   {
     
   }

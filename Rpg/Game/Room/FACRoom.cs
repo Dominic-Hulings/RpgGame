@@ -12,10 +12,10 @@ public class FACRoom : BaseRoom
       while ( sr.Peek() >= 0 )
       {
         string? currentLine = sr.ReadLine();
-        if ( currentLine == roomName )
+        if ( currentLine == $"NAME{roomName}" )
         {
           roomFound = true;
-          this.Name = roomName.Remove(0, 4);
+          this.Name = roomName;
           break;
         }
       }

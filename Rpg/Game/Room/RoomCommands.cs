@@ -4,7 +4,7 @@ namespace Rpg.Game.Room;
 
 public static class RoomCommands
 {
-  public static List<FACRoom> CreateAll()
+  public static List<FACRoom> CreateAllUsed()
   {
     List<string> RoomNames = new List<string>();
     
@@ -18,7 +18,7 @@ public static class RoomCommands
           
           if ( y != "ENDOFFILE" )
           {
-            RoomNames.Add(y);
+            RoomNames.Add(y.Substring(4));
           }
         }
       }

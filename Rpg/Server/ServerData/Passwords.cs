@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Rpg.TerminalUtils;
 
 namespace Rpg.Server.ServerData;
 
@@ -65,7 +66,7 @@ public static class Passwords
       {
         currentLine++;
         
-        if ( sr.ReadLine() == nameQuery)
+        if ( sr.ReadLine() == "!" && sr.ReadLine() == nameQuery)
         {
           return currentLine;
         }
@@ -101,10 +102,10 @@ public static class Passwords
   
   public static void ResetPlayersFile() // Deletes all data in players.txt
   {
-    File.WriteAllText(Paths.GetPath("PLYR"), "******************************************************\n\nFormat:\n\nPlayerName\nPlayerPassword\nCurrentRoom\nPlayerSpawn\n\n******************************************************\n");
+    File.WriteAllText(Paths.GetPath("PLYR"), "******************************************************\n\nFormat:\n\nPlayerName\nPlayerPassword\nCurrentRoom\nPlayerSpawn\nPlayerStats\n{\n  :HEALTH:LEVEL:EXPERIENCE:EXPERIENCETOLEVELUP:MAXHEALTH:DEFENSE:MANA:MAXMANA:RACE:CLASS:ISFEMALE\n}\nPlayerInventory\n{\n  :ITEMNAME/ID; ITEMNAME/ID2; ...\n}\n\n******************************************************\n");
   }
   
-  public static void Store( string inUserId, string inPassword, string inPlayerStats, string inPlayerInv = "NULL" ) // Stores a hashed user id along with a hashed password (SHA256)
+  public static void Store( string inUserId, string inPassword, string inPlayerStats, string inPlayerInv = "Empty" ) // Stores a hashed user id along with a hashed password (SHA256)
   {
     if (!isValidPwd(inPassword))
     {
@@ -127,12 +128,12 @@ public static class Passwords
           // byte[] idHash = sha256.ComputeHash(id); // TODO: Add a salt that can be set by admin
           
           sw.WriteLine("!");
-          sw.WriteLine($"NAME{inUserId}");
+          sw.WriteLine(inUserId);
           sw.WriteLine(inPassword);
-          sw.WriteLine("Spawn Room");
-          sw.WriteLine("Spawn Room");
+          sw.WriteLine("CURSpawn Room");
+          sw.WriteLine("SPNSpawn Room");
           sw.WriteLine(inPlayerStats);
-          // sw.WriteLine(inPlayerInv);
+          sw.WriteLine(inPlayerInv);
           
           break;
         }
@@ -146,7 +147,7 @@ public static class Passwords
   public static void LoginQuery() // Prompts for Name and then password
   {
     Console.WriteLine();
-    Console.WriteLine("Please enter your character's name.");
+    Terminal.DisplayLine("Please enter your character's name.", "Cyan");
     Console.Write("Name: ");
     string inName = Console.ReadLine();
     int lineOfName = IdQuery(inName);
@@ -158,13 +159,13 @@ public static class Passwords
       return;
     }
     
-    Console.WriteLine($"Now please enter the password for {inName}");
+    Terminal.DisplayLine($"Now please enter the password for {inName}", "Cyan");
     string inPwd = HideInput();
     
     if ( PasswordQuery(inPwd, lineOfName) )
     {
       Console.WriteLine($"Welcome back {inName}!");
-      return;
     }
+    
   }
 }
