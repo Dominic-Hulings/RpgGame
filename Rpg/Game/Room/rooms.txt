@@ -7,17 +7,35 @@ RoomDescription
 RoomTemp (integer) 1 - 5 (1 being freezing, 3 being normal, and 5 being boiling)
 IsOutside (bool)
 IsLit (bool)
+Direction
+RoomName
 
 ******************************************************
-
+!
+NAMESpawn Room
+Testing
+3
+true
+true
+North
+Room 1
+!
+NAMERoom 1
+Testing
+3
+true
+true
+South
 Spawn Room
-Test test
+West
+Room 2
+!
+NAMERoom 2
+More testing
 3
 true
 true
-
-testing
-gjfkdsjgfds
-3
-true
-true
+East
+Room 1
+!
+ENDOFFILE

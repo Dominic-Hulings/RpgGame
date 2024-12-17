@@ -101,7 +101,7 @@ public static class Passwords
   
   public static void ResetPlayersFile() // Deletes all data in players.txt
   {
-    File.WriteAllText(Paths.GetPath("PLYR"), "");
+    File.WriteAllText(Paths.GetPath("PLYR"), "******************************************************\n\nFormat:\n\nPlayerName\nPlayerPassword\nCurrentRoom\nPlayerSpawn\n\n******************************************************\n\n");
   }
   
   public static void Store( string inUserId, string inPassword ) // Stores a hashed user id along with a hashed password (SHA256)
@@ -128,6 +128,8 @@ public static class Passwords
           
           sw.WriteLine(inUserId);
           sw.WriteLine(inPassword);
+          sw.WriteLine("Spawn Room");
+          sw.WriteLine("Spawn Room");
           
           break;
         }

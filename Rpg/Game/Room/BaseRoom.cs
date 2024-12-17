@@ -14,11 +14,11 @@ public abstract class BaseRoom
   public bool IsOutside;
   public bool IsLit;
   
-  public List<Player.BasePlayer>? PlayersInRoom;
-  public List<BaseNpc>? NPCsInRoom;
-  public List<Corpse>? CorpsesInRoom;
-  public List<Item.BaseItem>? ItemsInRoom;
+  public List<Player.BasePlayer> PlayersInRoom = new List<Player.BasePlayer>();
+  public List<BaseNpc> NPCsInRoom = new List<BaseNpc>();
+  public List<Corpse> CorpsesInRoom  = new List<Corpse>();
+  public List<Item.BaseItem> ItemsInRoom  = new List<Item.BaseItem>();
   
-  public Dictionary<string, string>? DirectionsToExit;
-  //   Direction^       ^Exit description
+  public Dictionary<string, string> DirectionsToExit = new Dictionary<string, string>();
+  //         Direction^       ^Room
 }

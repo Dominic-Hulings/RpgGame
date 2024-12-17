@@ -1,5 +1,6 @@
 using Rpg.Game;
 using Rpg.Server.ServerData;
+using Rpg.TerminalUtils;
 
 namespace Rpg.Game.Player
 {
@@ -28,27 +29,25 @@ namespace Rpg.Game.Player
       
       while (true)
       {
-        Console.WriteLine("Are you a male (m) or female (f)?");
+        Terminal.DisplayLine("Are you a male (m) or female (f)?", "Cyan");
         Console.WriteLine("*This will not effect gameplay.");
         
         // Gender
         if (Console.ReadLine().ToLower() == "m")
         {
           isFemale = false;
+          Terminal.DisplayLine("You have chosen a male!", "Green");
           break;
         }
         
-        else if (Console.ReadLine().ToLower() == "f")
+        if (Console.ReadLine().ToLower() == "f")
         {
           isFemale = true;
+          Terminal.DisplayLine("You have chosen a female!", "Green");
           break;
         }
         
-        else
-        {
-          Console.WriteLine("Input not recognized, please try again.");
-          continue;
-        }
+        Console.WriteLine("Input not recognized, please try again.");
       }
       
       // Name
@@ -62,6 +61,7 @@ namespace Rpg.Game.Player
         if (Passwords.IdQuery(Name) == 0)
         {
           Console.WriteLine();
+          Terminal.DisplayLine($"Name {Name} has been created!", "Green");
           break;
         }
         
@@ -71,7 +71,7 @@ namespace Rpg.Game.Player
       // Race
       while ( true )
       {
-        Console.WriteLine("Now it's time to choose a race! Different races come with different perks.");
+        Terminal.DisplayLine("Now it's time to choose a race! Different races come with different perks.", "Cyan");
         Console.WriteLine("The races you can choose from include:");
         string[] validRaces = ["human", "elf", "dwarf", "orc", "gnome", "duegrar"];
         
@@ -107,7 +107,7 @@ namespace Rpg.Game.Player
       // Class
       while (true)
       {
-        Console.WriteLine("Now it is time to choose a class, what will you choose?");
+        Terminal.DisplayLine("Now it is time to choose a class, what will you choose?", "Cyan");
         string[] validClasses = ["fighter", "spellcaster", "thief"];
         
         Console.WriteLine("|   Fighter   || Relies on strength and skill to win a fight.");
@@ -129,7 +129,7 @@ namespace Rpg.Game.Player
         Console.WriteLine();
         if (isValid)
         {
-          Console.WriteLine($"The class you chose was a {Class}!");
+          Terminal.DisplayLine($"The class you chose was a {Class}!", "Green");
           break;
         }
         
@@ -139,7 +139,7 @@ namespace Rpg.Game.Player
       // Password
       while (true)
       {
-        Console.WriteLine($"Please create a password for {Name}.");
+        Terminal.DisplayLine($"Please create a password for {Name}.", "Cyan");
         Console.WriteLine("*This is how you will re-access your character if you log out.");
         Console.WriteLine("**You will need to remember your Characters name AND password!");
         Console.WriteLine();
@@ -163,11 +163,11 @@ namespace Rpg.Game.Player
           continue;
         }
         
-        Console.WriteLine("Your password has been successfully set!");
+        Terminal.DisplayLine("Your password has been successfully set!", "Green");
         Passwords.Store( Name, inPwd );
         break;
       }
-      Console.WriteLine($"BasePlayer {Name} has been created sucessfully!");
+      Terminal.DisplayLine($"BasePlayer {Name} has been created sucessfully!", "Green");
       return new BasePlayer(Name, Race, Class, isFemale, Health);
     }
   }

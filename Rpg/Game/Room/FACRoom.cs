@@ -15,14 +15,14 @@ public class FACRoom : BaseRoom
         if ( currentLine == roomName )
         {
           roomFound = true;
-          this.Name = roomName;
+          this.Name = roomName.Remove(0, 4);
           break;
         }
       }
       
       if(!roomFound)
       {
-        Console.WriteLine($"Room {roomName} was not found in rooms.txt");
+        Console.WriteLine($"Room '{roomName}' was not found in rooms.txt");
         return;
       }
       
@@ -30,6 +30,18 @@ public class FACRoom : BaseRoom
       this.Temp = int.Parse(sr.ReadLine());
       this.IsOutside = bool.Parse(sr.ReadLine());
       this.IsLit = bool.Parse(sr.ReadLine());
+      
+      while (true)
+      {
+        string? nextLine = sr.ReadLine();
+        
+        if ( nextLine == "!")
+        {
+          break;
+        }
+        
+        DirectionsToExit.Add(nextLine, sr.ReadLine());
+      }
     }
   }
 }

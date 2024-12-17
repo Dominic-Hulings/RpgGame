@@ -1,0 +1,15 @@
+******************************************************
+
+Format:
+
+PlayerName
+PlayerPassword
+CurrentRoom
+PlayerSpawn
+
+******************************************************
+
+Dom
+testing*
+Spawn Room
+Spawn Room

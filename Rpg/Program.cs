@@ -10,11 +10,4 @@ Console.Clear();
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 Console.WriteLine();
 
-Paths.SetAll();
-ServerConfig.StartConfig();
-//ServerRuntime.InitialStartup();
-
-/*
-CreateCharacter.New(1);
-Passwords.ResetPlayersFile();
-*/
+ServerRuntime.Start();
