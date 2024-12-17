@@ -20,9 +20,9 @@ public class BasePlayer
   private int MaxHealth;
   private int Defense = 0; //? Minimum defense is probably going to be 0
   private int Mana = 0;
+  private int MaxMana = 0;
   private int CurrentExperience = 0;
   private int ExperienceToLevelUp = 50;
-  private int playerId;
   public string Name { get; }
   public string Race { get; }
   public string Class;

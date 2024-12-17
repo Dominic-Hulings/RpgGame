@@ -6,9 +6,17 @@ PlayerName
 PlayerPassword
 CurrentRoom
 PlayerSpawn
+PlayerStats
+{
+  :HEALTH:LEVEL:EXPERIENCE:EXPERIENCETOLEVELUP:MAXHEALTH:DEFENSE:MANA:MAXMANA:RACE:CLASS:ISFEMALE
+}
+PlayerInventory
+{
+  :ITEMNAME/ID; ITEMNAME/ID2; ...
+}
 
 ******************************************************
-
+!
 Dom
 testing*
 Spawn Room

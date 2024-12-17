@@ -12,7 +12,7 @@ namespace Rpg.Game.Player
       // So I don't have to go through all the prompts while testing
       if ( makeDefault != 0 )
       {
-        Passwords.Store( "Dom", "testing*" );
+        Passwords.Store( "Dom", "testing*", "50:0:0:50:50:0:0:0:elf:fighter:false" );
         return new BasePlayer("Dom", "elf", "fighter", false, 50);
       }
       // Base stats and beginning
@@ -164,7 +164,11 @@ namespace Rpg.Game.Player
         }
         
         Terminal.DisplayLine("Your password has been successfully set!", "Green");
-        Passwords.Store( Name, inPwd );
+        
+        string playerStats = $":{Health}:{Level}:0:50:{Health}:0:0:0:{Race}:{Class}:{isFemale}";
+        string playerInv = $"";
+        
+        Passwords.Store( $"NAME{Name}", inPwd, playerStats, playerInv );
         break;
       }
       Terminal.DisplayLine($"BasePlayer {Name} has been created sucessfully!", "Green");

@@ -74,23 +74,20 @@ public static class ServerRuntime
   
   public static void Start()
   {
-    foreach (FACRoom x in RoomCommands.CreateAll())
+    using StreamReader sr = new StreamReader(Paths.GetPath("PLYR"));
     {
-      Console.WriteLine(x.Name);
-      Console.WriteLine(x.Description);
-      Console.WriteLine(x.Temp);
-      Console.WriteLine(x.IsOutside);
-      Console.WriteLine(x.IsLit);
-      
-      foreach ( var item in x.DirectionsToExit )
+      while ( sr.Peek() >= 0 )
       {
-        Console.WriteLine(item.Key);
-        Console.WriteLine(item.Value);
+        string line = sr.ReadLine();
+        
+        if ( line == "!" )
+        {
+          
+        }
       }
-      
-      Console.WriteLine();
-      Console.WriteLine();
     }
+    
+    
   }
   
   public static void Pause()
@@ -102,5 +99,4 @@ public static class ServerRuntime
   {
     
   }
-  
 }
