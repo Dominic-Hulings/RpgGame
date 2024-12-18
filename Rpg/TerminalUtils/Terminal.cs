@@ -4,13 +4,6 @@ namespace Rpg.TerminalUtils;
 
 public static class Terminal
 {
-  public static void AcceptInput()
-  {
-    Console.Write("Input: ");
-    string input = Console.ReadLine();
-    PlayerCommands.ExecCommand(input);
-  }
-  
   public static void DisplayLine ( string inText, string inColor = "DEFAULT")
   {
     ConsoleColor consoleColor = ConsoleColor.White;

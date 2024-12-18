@@ -1,45 +1,62 @@
 using Rpg;
 using Rpg.Game;
+using Rpg.Server.ServerData;
 using Rpg.TerminalUtils;
 
 namespace Rpg.Game.Player;
 
-public static class PlayerCommands
+public class PlayerCommands
 {
   // Fields
-  public static Dictionary<string, Delegate> validCommands = new Dictionary<string, Delegate>()
+  public Dictionary<string, Delegate> validCommands = new Dictionary<string, Delegate>()
   {
-    { "exit", new Func<string, string>(FUNCExit) },
-    { "help", new Func<string, string>(FUNCHelp) }
+    { "exit", new Func<int, int>(FUNCExit) },
+    { "help", new Func<int, int>(FUNCHelp) },
+    { "login", new Func<int, int>(FUNCLogin) }
   };
   
+  private BasePlayer? Player = null;
+  private int retVal = 0;
+  
   // Methods
-  public static void ExecCommand(string inCommand)
+  public int ExecCommand(string inCommand, BasePlayer? inPlayer)
   {
     if ( validCommands.ContainsKey(inCommand.ToLower()) )
     {
       validCommands[inCommand].DynamicInvoke("");
-      return;
     }
     
     Terminal.DisplayLine($"Command {inCommand} not found.", "Red");
+    return 0;
   }
   
   //!
   //! COMMAND FUNCTIONS END
   //!
   
-  private static string FUNCExit(string x = "")
+  public static int FUNCExit(int x = 0)
   {
     Terminal.DisplayLine("Exiting game...", "Yellow");
     Environment.Exit(1);
     return x;
   }
   
-  private static string FUNCHelp(string inCmd = "GEN")
+  public static int FUNCHelp(int inCmd = 0)
   {
     Console.WriteLine("Help executed");
     return inCmd;
+  }
+  
+  public static int FUNCLogin(int x = 0)
+  {
+    Player = Passwords.LoginQuery();
+    
+    if ( Player == null )
+    {
+      Terminal.DisplayLine("Login failed.", "Red");
+    }
+    
+    return x;
   }
   
   //!

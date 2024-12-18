@@ -7,6 +7,9 @@ namespace Rpg.Server;
 
 public static class ServerRuntime
 {
+  // Fields
+  public static List<BasePlayer> PlayersOnline = new List<BasePlayer>();
+  
   public static void InitialStartup()
   {
     Console.WriteLine("Thank you for choosing my MUD to play!");
@@ -81,10 +84,11 @@ public static class ServerRuntime
     Console.WriteLine("Type 'login' to login");
     Console.WriteLine("Type 'help' for a list of commands");
     Console.WriteLine();
+    PlayerTerminal InputTerminal = new PlayerTerminal();
     
     while (gameloop)
     {
-      Terminal.AcceptInput();
+      
     }
     
   }

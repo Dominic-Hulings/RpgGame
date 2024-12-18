@@ -164,7 +164,9 @@ public static class Passwords
     if ( PasswordQuery(inPwd, lineOfName) )
     {
       Console.WriteLine($"Welcome back {inName}!");
-      return CreateCharacter.MakeExisting(lineOfName);
+      BasePlayer player = CreateCharacter.MakeExisting(lineOfName);
+      ServerRuntime.PlayersOnline.Add(player);
+      return player;
     }
     
     Terminal.DisplayLine("Password was incorrect, please try again later.", "Red");
