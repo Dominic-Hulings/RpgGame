@@ -78,12 +78,9 @@ public static class ServerRuntime
     List<FACRoom> AllRooms = new List<FACRoom>(RoomCommands.CreateAllUsed());
     bool gameloop = true;
     Terminal.DisplayLine("Game started!", "Green");
-    //! TODO - Passwords.LoginQuery();
     
-    while (gameloop)
-    {
-      
-    }
+    
+    
   }
   
   public static void Pause()

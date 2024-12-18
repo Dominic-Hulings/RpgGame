@@ -5,13 +5,56 @@ namespace Rpg.Game.Player;
 public class BasePlayer
 {
   // Constructor
-  public BasePlayer(string inName, string inRace, string inClass, bool inIsFemale, int inHealth)
+  public BasePlayer(string inName, string inCurrentRoom, string inSpawnRoom, string inAttributes)
   {
     Name = inName;
-    Race = inRace;
-    Health = MaxHealth = inHealth;
-    Class = inClass;
-    isFemale = inIsFemale;
+    CurrentRoom = inCurrentRoom;
+    SpawnRoom = inSpawnRoom;
+    
+    string[] Attributes = inAttributes.Split(':');
+    int i = 0;
+    
+    foreach ( string value in Attributes )
+    {
+      switch (i)
+      {
+        case 0:
+          Health = int.Parse(value);
+          break;
+        case 1:
+          Level = int.Parse(value);
+          break;
+        case 2:
+          MaxHealth = int.Parse(value);
+          break;
+        case 3:
+          Defense = int.Parse(value);
+          break;
+        case 4:
+          Mana = int.Parse(value);
+          break;
+        case 5:
+          MaxMana = int.Parse(value);
+          break;
+        case 6:
+          CurrentExperience = int.Parse(value);
+          break;
+        case 7:
+          ExperienceToLevelUp = int.Parse(value);
+          break;
+        case 8:
+          Race = value;
+          break;
+        case 9:
+          Class = value;
+          break;
+        case 10:
+          IsFemale = bool.Parse(value);
+          break;
+        //* Add cases for inv items and held items
+      }
+      i++;
+    }
   }
   
   // Fields & Properties
@@ -28,7 +71,7 @@ public class BasePlayer
   public string Class;
   public string CurrentRoom { get; set; } = "";
   private string SpawnRoom { get; set; } = "";
-  public bool isFemale;
+  public bool IsFemale;
   public bool isInCombat;
   private List<Item.BaseItem> Inventory = new List<Item.BaseItem>(); //? Minimum inventory is a torch
   public Item.BaseItem? ItemInLeftHand { get; set; }

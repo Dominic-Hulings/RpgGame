@@ -10,4 +10,4 @@ Console.Clear();
 Console.WriteLine("Welcome to Dominic's Rpg MUD thingy! I hope you enjoy :)\n");
 Console.WriteLine();
 
-ServerRuntime.Start();
+//ServerRuntime.Start();

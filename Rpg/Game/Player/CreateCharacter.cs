@@ -12,12 +12,16 @@ namespace Rpg.Game.Player
       // So I don't have to go through all the prompts while testing
       if ( makeDefault != 0 )
       {
-        Passwords.Store( "Dom", "testing*", "50:0:0:50:50:0:0:0:elf:fighter:false" );
-        return new BasePlayer("Dom", "elf", "fighter", false, 50);
+        Passwords.Store( "Dom", "testing*", "50:1:50:0:0:0:0:50:elf:fighter:false:0:0:[0]");
+        return new BasePlayer( "Dom", "Spawn Room", "Spawn Room", "50:1:50:0:0:0:0:50:elf:fighter:false:0:0:[0]");
       }
       // Base stats and beginning
       int Health = 50;
+      int MaxHealth = 50;
+      int Mana = 0;
+      int MaxMana = 0;
       int Experience = 0;
+      int Defense = 0;
       int ExperienceToLevelUp = 50;
       int Level = 1;
       bool isFemale;
@@ -104,6 +108,8 @@ namespace Rpg.Game.Player
         Console.WriteLine("Input not recognized, please type a valid race from the list.");
       }
       
+      string playerStats;
+        
       // Class
       while (true)
       {
@@ -165,17 +171,17 @@ namespace Rpg.Game.Player
         
         Terminal.DisplayLine("Your password has been successfully set!", "Green");
         
-        string playerStats = $":{Health}:{Level}:0:50:{Health}:0:0:0:{Race}:{Class}:{isFemale}";
-        string playerInv = $"";
+        playerStats = $"{Health}:{Level}:{MaxHealth}:{Defense}:{Mana}:{MaxMana}:0:50:{Race}:{Class}:{isFemale}:0:0:[0]";
         
-        Passwords.Store( Name, inPwd, playerStats, playerInv );
+        Passwords.Store( Name, inPwd, playerStats );
         break;
       }
+      
       Terminal.DisplayLine($"BasePlayer {Name} has been created sucessfully!", "Green");
-      return new BasePlayer(Name, Race, Class, isFemale, Health);
+      return new BasePlayer(Name, "Spawn Room", "Spawn Room", playerStats);
     }
     
-    public static void GetExisting ()
+    public static void MakeExisting ()
     {
       
     }

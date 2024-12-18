@@ -102,10 +102,10 @@ public static class Passwords
   
   public static void ResetPlayersFile() // Deletes all data in players.txt
   {
-    File.WriteAllText(Paths.GetPath("PLYR"), "******************************************************\n\nFormat:\n\nPlayerName\nPlayerPassword\nCurrentRoom\nPlayerSpawn\nPlayerStats\n{\n  :HEALTH:LEVEL:EXPERIENCE:EXPERIENCETOLEVELUP:MAXHEALTH:DEFENSE:MANA:MAXMANA:RACE:CLASS:ISFEMALE\n}\nPlayerInventory\n{\n  :ITEMNAME/ID; ITEMNAME/ID2; ...\n}\n\n******************************************************\n");
+    File.WriteAllText(Paths.GetPath("PLYR"), "******************************************************\n\nFormat:\n\nPlayerName\nPlayerPassword\nCurrentRoom\nPlayerSpawn\nPlayerStats\n{\n  HEALTH:LEVEL:MAXHEALTH:DEFENSE:MANA:MAXMANA:CURRENTXP:EXTOLEVELUP:RACE:CLASS:ISFEMALE:[LHAND][RHAND][INVITEM1, INVITEM2, ...]\n}\n\n******************************************************\n");
   }
   
-  public static void Store( string inUserId, string inPassword, string inPlayerStats, string inPlayerInv = "Empty" ) // Stores a hashed user id along with a hashed password (SHA256)
+  public static void Store( string inUserId, string inPassword, string inAttributes) // Stores a hashed user id along with a hashed password (SHA256)
   {
     if (!isValidPwd(inPassword))
     {
@@ -132,8 +132,7 @@ public static class Passwords
           sw.WriteLine(inPassword);
           sw.WriteLine("CURSpawn Room");
           sw.WriteLine("SPNSpawn Room");
-          sw.WriteLine(inPlayerStats);
-          sw.WriteLine(inPlayerInv);
+          sw.WriteLine(inAttributes);
           
           break;
         }
