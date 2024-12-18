@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Rpg.Game.Player;
 using Rpg.TerminalUtils;
 
 namespace Rpg.Server.ServerData;
@@ -143,7 +144,7 @@ public static class Passwords
     }
   }
   
-  public static void LoginQuery() // Prompts for Name and then password
+  public static BasePlayer? LoginQuery() // Prompts for Name and then password
   {
     Console.WriteLine();
     Terminal.DisplayLine("Please enter your character's name.", "Cyan");
@@ -153,9 +154,8 @@ public static class Passwords
     
     if (lineOfName == 0)
     {
-      Console.WriteLine("Name does not exist, please try again.");
-      LoginQuery();
-      return;
+      Terminal.DisplayLine("Name does not exist, please try again.", "Red");
+      return null;
     }
     
     Terminal.DisplayLine($"Now please enter the password for {inName}", "Cyan");
@@ -164,7 +164,11 @@ public static class Passwords
     if ( PasswordQuery(inPwd, lineOfName) )
     {
       Console.WriteLine($"Welcome back {inName}!");
+      return CreateCharacter.MakeExisting(lineOfName);
     }
+    
+    Terminal.DisplayLine("Password was incorrect, please try again later.", "Red");
+    return null;
     
   }
 }

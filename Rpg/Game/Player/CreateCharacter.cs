@@ -181,9 +181,23 @@ namespace Rpg.Game.Player
       return new BasePlayer(Name, "Spawn Room", "Spawn Room", playerStats);
     }
     
-    public static void MakeExisting ()
+    public static BasePlayer MakeExisting ( int lineOfName )
     {
-      
+      using StreamReader sr = new StreamReader(Paths.GetPath("PLYR"));
+      {
+        for ( int i = 0; i < lineOfName; i++)
+        {
+          sr.ReadLine();
+        }
+        
+        string name = sr.ReadLine();
+        sr.ReadLine();
+        string currentRoom = sr.ReadLine();
+        string spawnRoom = sr.ReadLine();
+        string attributes = sr.ReadLine();
+        
+        return new BasePlayer( name, currentRoom, spawnRoom, attributes );
+      }
     }
   }
 }

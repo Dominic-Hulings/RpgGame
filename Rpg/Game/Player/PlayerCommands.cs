@@ -6,9 +6,9 @@ namespace Rpg.Game.Player;
 public static class PlayerCommands
 {
   // Methods
-  public static string ExecCommand(string inCommand, BasePlayer basePlayer)
+  public static string ExecCommand(string inCommand)
   {
-    if ( validCommands.ContainsKey(inCommand) )
+    if ( validCommands.ContainsKey(inCommand.ToLower()) )
     {
       return validCommands[inCommand];
     }
@@ -19,8 +19,10 @@ public static class PlayerCommands
   // Fields
   public static Dictionary<string, string> validCommands = new Dictionary<string, string>()
   {
-    { "attack", "1"},
-    { "rest", "0"}
+    { "exit", "Exit command executed!"},
+    { "help", "Help command executed!" },
+    { "attack", "Attack command executed!"},
+    { "rest", "Rest command executed!"}
   };
 }
 

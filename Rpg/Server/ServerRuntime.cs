@@ -78,8 +78,14 @@ public static class ServerRuntime
     List<FACRoom> AllRooms = new List<FACRoom>(RoomCommands.CreateAllUsed());
     bool gameloop = true;
     Terminal.DisplayLine("Game started!", "Green");
+    Console.WriteLine("Type 'login' to login");
+    Console.WriteLine("Type 'help' for a list of commands");
+    Console.WriteLine();
     
-    
+    while (gameloop)
+    {
+      Terminal.AcceptInput();
+    }
     
   }
   
