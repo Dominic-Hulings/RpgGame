@@ -8,7 +8,7 @@ public static class Terminal
   {
     Console.Write("Input: ");
     string input = Console.ReadLine();
-    Console.WriteLine(PlayerCommands.ExecCommand(input));
+    PlayerCommands.ExecCommand(input);
   }
   
   public static void DisplayLine ( string inText, string inColor = "DEFAULT")

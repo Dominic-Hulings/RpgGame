@@ -28,8 +28,8 @@ public static class ServerRuntime
       
       if ( input?.ToLower() == "y" )
       {
-        Terminal.DisplayLine("Starting configuration scripts...", "Orange");
-        Terminal.DisplayLine("Adding path variables to paths.txt...", "Orange");
+        Terminal.DisplayLine("Starting configuration scripts...", "Yellow");
+        Terminal.DisplayLine("Adding path variables to paths.txt...", "Yellow");
         Paths.SetAll();
         Terminal.DisplayLine("Paths added!", "Green");
         ServerConfig.StartConfig();
@@ -56,7 +56,7 @@ public static class ServerRuntime
       {
         Console.WriteLine("You chose single player!");
         Console.WriteLine();
-        Terminal.DisplayLine("Starting character create...", "Orange");
+        Terminal.DisplayLine("Starting character create...", "Yellow");
         CreateCharacter.New();
         
       }
@@ -74,7 +74,7 @@ public static class ServerRuntime
   
   public static void Start()
   {
-    Terminal.DisplayLine("Starting game...", "Orange");
+    Terminal.DisplayLine("Starting game...", "Yellow");
     List<FACRoom> AllRooms = new List<FACRoom>(RoomCommands.CreateAllUsed());
     bool gameloop = true;
     Terminal.DisplayLine("Game started!", "Green");
